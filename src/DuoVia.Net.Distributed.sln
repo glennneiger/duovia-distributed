@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B4E92D75-EC33-47A0-98B4-F7CB15CC1ECA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B4BD92DB-D725-4D20-8134-B610CA83F842}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{FC6B546C-85D6-4C37-ABB4-E02903AFB564}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{F2EA68D1-E9C5-40C2-8EFA-4D282ACD32D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DuoVia.Net.Distributed", "DuoVia.Net.Distributed", "{E80AB699-AF73-45A8-AE9F-55BD614803BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoVia.Net.Distributed", "DuoVia.Net.Distributed\DuoVia.Net.Distributed\DuoVia.Net.Distributed.csproj", "{D650995E-E052-4341-872B-4FEF1AF4CEFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dpp", "DuoVia.Net.Distributed\dpp\dpp.csproj", "{CD128FE8-65E4-4696-97A5-C008DB027ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoVia.Net.DistributedConsoleTest", "Tests\Integration\DuoVia.Net.DistributedConsoleTest\DuoVia.Net.DistributedConsoleTest.csproj", "{98F062BC-F24B-40AA-8E5B-301FF8134A67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoVia.Net.DistributedConsoleHost", "Tests\Integration\DuoVia.Net.DistributedConsoleHost\DuoVia.Net.DistributedConsoleHost.csproj", "{56361654-8ADE-48BB-BC04-9D303E86759A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".SolutionItems", ".SolutionItems", "{73932D21-9609-4B90-8815-879C6849C1DF}"
+	ProjectSection(SolutionItems) = preProject
+		License.txt = License.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D650995E-E052-4341-872B-4FEF1AF4CEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D650995E-E052-4341-872B-4FEF1AF4CEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D650995E-E052-4341-872B-4FEF1AF4CEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D650995E-E052-4341-872B-4FEF1AF4CEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD128FE8-65E4-4696-97A5-C008DB027ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD128FE8-65E4-4696-97A5-C008DB027ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD128FE8-65E4-4696-97A5-C008DB027ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD128FE8-65E4-4696-97A5-C008DB027ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98F062BC-F24B-40AA-8E5B-301FF8134A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98F062BC-F24B-40AA-8E5B-301FF8134A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98F062BC-F24B-40AA-8E5B-301FF8134A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98F062BC-F24B-40AA-8E5B-301FF8134A67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56361654-8ADE-48BB-BC04-9D303E86759A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56361654-8ADE-48BB-BC04-9D303E86759A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56361654-8ADE-48BB-BC04-9D303E86759A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56361654-8ADE-48BB-BC04-9D303E86759A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC6B546C-85D6-4C37-ABB4-E02903AFB564} = {B4BD92DB-D725-4D20-8134-B610CA83F842}
+		{F2EA68D1-E9C5-40C2-8EFA-4D282ACD32D4} = {B4BD92DB-D725-4D20-8134-B610CA83F842}
+		{98F062BC-F24B-40AA-8E5B-301FF8134A67} = {F2EA68D1-E9C5-40C2-8EFA-4D282ACD32D4}
+		{56361654-8ADE-48BB-BC04-9D303E86759A} = {F2EA68D1-E9C5-40C2-8EFA-4D282ACD32D4}
+		{D650995E-E052-4341-872B-4FEF1AF4CEFB} = {E80AB699-AF73-45A8-AE9F-55BD614803BF}
+		{CD128FE8-65E4-4696-97A5-C008DB027ECC} = {E80AB699-AF73-45A8-AE9F-55BD614803BF}
+	EndGlobalSection
+EndGlobal
