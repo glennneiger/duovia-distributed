@@ -21,9 +21,7 @@ namespace DuoVia.Net.DistributedConsoleHost
                 sessionExecutionDirectory: @"C:\T\E",
                 runLocalInProcess: false))
             {
-                
-
-                Console.WriteLine("hosting starte - press Enter to quit");
+                Console.WriteLine("hosting started - press Enter to quit");
                 Console.ReadLine();
             }
         }

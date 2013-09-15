@@ -110,6 +110,7 @@ namespace DuoVia.Net.DistributedConsoleTest
             var prime = rand.Next(1, 9);
             Thread.Sleep(prime * 1000);
             Log.Warning("log message " + prime);
+            //Thread.Sleep(600000); //test very long response time
             return prime;
         }
     }
