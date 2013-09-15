@@ -17,7 +17,7 @@ In DuoVia.Net.Distributed, we combined what we learned with DuoVia.MpiVisor with
 
 Rather than telling you how this works, we prefer to show you here. There is no simpler way of doing distributed parallel programming while maintaining the ability to run and debug locally in Visual Studio.
 
-First the node host. This can be a console app or windows service running on as many computers are you wish. In fact, for testing your code, you could host a single node in your own application.
+First the node host. This can be a console app or windows service running on as many computers as you wish. In fact, for testing your code, you could host a single node in your own application.
 
 	using System;
 	using System.Configuration;
@@ -68,7 +68,7 @@ Second, your code that needs to run in parallel across multiple machines.
 					subscriptionRate, 
 					logPollingIntervalSeconds, 
 					LogLevel.Debug, 
-					endpoint))
+					endpoint)) //last arg is params IPEndPoint[] so connect to all node servers you want
 				{
 					client.LogMessageReceived += ClientOnLogMessageReceived;
 
@@ -86,7 +86,8 @@ Second, your code that needs to run in parallel across multiple machines.
 					foreach(var result in results) Console.WriteLine(result);
 					client.SweepLogs(); //one last log sweep
 
-					//now do it again with results from first using ForEach
+					//now do it again with results from first run
+					//similar to Parallel.ForEach
 					var distributedLoopResult2 = client.ForEach(results, 
 						(source, proxy) => proxy.GetName(source));
 
@@ -147,14 +148,15 @@ Second, your code that needs to run in parallel across multiple machines.
 				return "name:" + query + primes;
 			}
 
-			//brute force prime finder - consumes more and more time
+			//brute force time waster for illustration only
 			private int CalculatePrimes(long from, long to)
 			{
 				var rand = new Random();
 				var prime = rand.Next(1, 9);
 				Thread.Sleep(prime * 1000);
 				Log.Warning("log message " + prime);
-				//Thread.Sleep(600000); //test very long response time - try it
+				//test very long response time - try it
+				//Thread.Sleep(600000); 
 				return prime;
 			}
 		}
