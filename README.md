@@ -163,7 +163,7 @@ Second, your code that needs to run in parallel across multiple machines.
 			}
 		}
 	}
-
+```
 Of course the code above is completely contrived but it serves to demonstrate just how easy it is to use the DuoVia.Net.Distribued libary.
 
 [1]: http://nuget.org/packages/DuoVia.Net.Distributed/   "NuGet Package"
