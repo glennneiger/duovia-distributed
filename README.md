@@ -19,6 +19,7 @@ Rather than telling you how this works, we prefer to show you here. There is no 
 
 First the node host. This can be a console app or windows service running on as many computers as you wish. In fact, for testing your code, you could host a single node in your own application.
 
+```C#
 	using System;
 	using System.Configuration;
 	using DuoVia.Net.Distributed.Server;
@@ -45,9 +46,10 @@ First the node host. This can be a console app or windows service running on as 
 			}
 		}
 	}
-
+```
 Second, your code that needs to run in parallel across multiple machines.
 
+```C#
 	using System;
 	using System.Globalization;
 	using System.Linq;
