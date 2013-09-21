@@ -92,6 +92,10 @@ namespace DuoVia.Net.Distributed
                             client.AddUpdatePackage(packager.Hash, packager.Package());
                         }
                         var node = client.CreateSession(request);
+                        // when a node is hosted using IPAddress.Any or is behind a NAT,
+                        // the node endpoint will be unusable by the node, 
+                        // so set it using the client's server endpoint
+                        if (!node.EndPoint.Equals(server)) node.EndPoint = server;
                         nodes.TryAdd(server, node);
                     }
                 }

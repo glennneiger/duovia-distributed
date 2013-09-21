@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using DuoVia.Net;
 
 namespace DuoVia.Net.Distributed
 {
     public class DistributedChannel : Channel
     {
         private DistributedEndPoint _endpoint = null;
-        private BinaryFormatter _formatter = new BinaryFormatter();
         private MethodSyncInfo[] _syncInfos;
 
         public DistributedEndPoint DistributedEndPoint { get { return _endpoint; } }
@@ -38,8 +38,7 @@ namespace DuoVia.Net.Distributed
             {
                 syncBytes = client.SyncInterface(_endpoint.SessionId);
             }
-            var ms = new MemoryStream(syncBytes);
-            _syncInfos = ((List<MethodSyncInfo>)_formatter.Deserialize(ms)).ToArray();
+            _syncInfos = ((List<MethodSyncInfo>)syncBytes.ToDeserializedObject()).ToArray();
         }
 
         /// <summary>
@@ -83,10 +82,18 @@ namespace DuoVia.Net.Distributed
             if (medthodId < 0)
                 throw new Exception(string.Format("Cannot match method '{0}' to its server side equivalent", callingMethod.Name));
 
+            byte[] bytes = new byte[0];
+            bool exceptionThrown;
             using (var client = new ServiceClient(_endpoint.EndPoint))
             {
-                return client.InvokeRemoteMethod(_endpoint.SessionId, medthodId, parameters);
+                bytes = client.InvokeRemoteMethod(_endpoint.SessionId, medthodId, parameters.ToSerializedBytes(), out exceptionThrown);
             }
+
+            var results = (object[])bytes.ToDeserializedObject();
+            if (exceptionThrown)
+                throw (Exception)results[0];
+
+            return results;
         }
 
 

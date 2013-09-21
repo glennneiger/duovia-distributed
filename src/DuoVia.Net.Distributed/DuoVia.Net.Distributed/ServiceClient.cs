@@ -41,11 +41,13 @@ namespace DuoVia.Net.Distributed
             return Proxy.SyncInterface(sessionId);
         }
 
-        public object[] InvokeRemoteMethod(Guid sessionId, int methodHashCode, params object[] parameters)
+        public byte[] InvokeRemoteMethod(Guid sessionId, int methodHashCode, byte[] parameters, out bool exceptionThrown)
         {
-            return Proxy.InvokeRemoteMethod(sessionId, methodHashCode, parameters);
+            bool ex;
+            var result = Proxy.InvokeRemoteMethod(sessionId, methodHashCode, parameters, out ex);
+            exceptionThrown = ex;
+            return result;
         }
-
 
         public LogMessage[] SweepLogMessages(Guid sessionId)
         {

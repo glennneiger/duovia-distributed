@@ -24,7 +24,7 @@ namespace DuoVia.Net.Distributed.Server
 
         void KillSession(Guid sessionId);
         byte[] SyncInterface(Guid sessionId);
-        object[] InvokeRemoteMethod(Guid sessionId, int methodHashCode, params object[] parameters);
+        byte[] InvokeRemoteMethod(Guid sessionId, int methodHashCode, byte[] parameters, out bool exceptionThrown);
         LogMessage[] SweepLogMessages(Guid sessionId);
     }
 
@@ -205,12 +205,16 @@ namespace DuoVia.Net.Distributed.Server
             }
         }
 
-        public object[] InvokeRemoteMethod(Guid sessionId, int methodHashCode, params object[] parameters)
+        public byte[] InvokeRemoteMethod(Guid sessionId, int methodHashCode, byte[] parameters, out bool exceptionThrown)
         {
+            exceptionThrown = false;
             var pipe = "dpp-" + sessionId;
             using (var client = new AgentClient(new NpEndPoint(pipe, 10000)))
             {
-                return client.InvokeRemoteMethod(methodHashCode, parameters);
+                bool clientExceptionThrown;
+                var result = client.InvokeRemoteMethod(methodHashCode, parameters, out clientExceptionThrown);
+                if (clientExceptionThrown) exceptionThrown = true;
+                return result;
             }
         }
 

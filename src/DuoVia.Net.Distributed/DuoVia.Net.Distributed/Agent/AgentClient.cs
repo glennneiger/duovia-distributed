@@ -23,9 +23,12 @@ namespace DuoVia.Net.Distributed.Agent
             return Proxy.SyncInterface();
         }
 
-        public object[] InvokeRemoteMethod(int methodHashCode, params object[] parameters)
+        public byte[] InvokeRemoteMethod(int methodHashCode, byte[] parameters, out bool exceptionThrown)
         {
-            return Proxy.InvokeRemoteMethod(methodHashCode, parameters);
+            bool exInner;
+            var result = Proxy.InvokeRemoteMethod(methodHashCode, parameters, out exInner);
+            exceptionThrown = exInner;
+            return result;
         }
 
 

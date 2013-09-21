@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using DuoVia.Net.Distributed.Server;
 using System.Net;
@@ -12,10 +13,9 @@ namespace DuoVia.Net.DistributedConsoleHost
     {
         static void Main(string[] args)
         {
-            var ip = ConfigurationManager.AppSettings["hostIP"];
-            var port = Convert.ToInt32(ConfigurationManager.AppSettings["hostPort"]);
-            var endpoint = new IPEndPoint(IPAddress.Parse(ip), port);
-
+            var port = 9096;
+            //can host on specific IP or on Any
+            var endpoint = new IPEndPoint(IPAddress.Any, port);
             using (var host = new Host(endpoint,
                 packageStorageDirectory: @"C:\T\P",
                 sessionExecutionDirectory: @"C:\T\E",
