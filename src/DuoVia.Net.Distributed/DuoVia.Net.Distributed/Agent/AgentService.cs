@@ -13,7 +13,7 @@ namespace DuoVia.Net.Distributed.Agent
     {
         void KillSession();
         byte[] SyncInterface();
-        object[] InvokeRemoteMethod(int methodHashCode, params object[] parameters);
+        byte[] InvokeRemoteMethod(int methodHashCode, byte[] parameters, out bool exceptionThrown);
         LogMessage[] SweepLogMessages();
     }
 
@@ -78,8 +78,13 @@ namespace DuoVia.Net.Distributed.Agent
             return ms.ToArray();
         }
 
-        public object[] InvokeRemoteMethod(int methodHashCode, params object[] parameters)
+        public byte[] InvokeRemoteMethod(int methodHashCode, byte[] parameters, out bool exceptionThrown)
         {
+            exceptionThrown = false;
+
+            //deserialize parameters
+            var paraObjects = (object[])parameters.ToDeserializedObject();
+
             //adapted from TcpHost
             if (_interfaceMethods.ContainsKey(methodHashCode))
             {
@@ -90,21 +95,23 @@ namespace DuoVia.Net.Distributed.Agent
                 object[] returnParameters;
                 try
                 {
-                    object returnValue = method.Invoke(_singletonInstance, parameters);
+                    object returnValue = method.Invoke(_singletonInstance, paraObjects);
                     //the result to the client is the return value (null if void) and the input parameters
-                    returnParameters = new object[1 + parameters.Length];
+                    returnParameters = new object[1 + paraObjects.Length];
                     returnParameters[0] = returnValue;
-                    for (int i = 0; i < parameters.Length; i++)
-                        returnParameters[i + 1] = isByRef[i] ? parameters[i] : null;
+                    for (int i = 0; i < paraObjects.Length; i++)
+                        returnParameters[i + 1] = isByRef[i] ? paraObjects[i] : null;
                 }
                 catch (Exception ex)
                 {
                     //an exception was caught. Rethrow it client side
+                    exceptionThrown = true;
                     returnParameters = new object[] { ex };
                 }
-                return returnParameters; //TODO assure exception parameter handled on client channel side
+                return returnParameters.ToSerializedBytes();
             }
-            return new object[] { new MethodAccessException("unknown method") };
+            var err = new object[] { new MethodAccessException("unknown method") };
+            return err.ToSerializedBytes();
         }
 
         private void CreateMethodMap()

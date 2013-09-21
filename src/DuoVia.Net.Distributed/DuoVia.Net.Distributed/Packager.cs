@@ -134,9 +134,8 @@ namespace DuoVia.Net.Distributed
                     gzs.CopyTo(msObj);
                 }
                 msObj.Seek(0, SeekOrigin.Begin);
-                BinaryFormatter formatter = new BinaryFormatter();
-                var dsObj = (Dictionary<string, byte[]>)formatter.Deserialize(msObj);
-                return dsObj;
+                var result = (Dictionary<string, byte[]>)msObj.ToArray().ToDeserializedObject();
+                return result;
             }
         }
 

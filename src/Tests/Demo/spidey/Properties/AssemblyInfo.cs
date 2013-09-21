@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DuoVia.Net.DistributedConsoleHost")]
+[assembly: AssemblyTitle("spidey")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DuoVia.Net.DistributedConsoleHost")]
+[assembly: AssemblyProduct("spidey")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("996bfdfc-0d62-45da-b438-c2af1a4c5c65")]
+[assembly: Guid("2b23ae60-c24b-4bd4-8ff4-f9ff4ed4ca0b")]
 
 // Version information for an assembly consists of the following four values:
 //

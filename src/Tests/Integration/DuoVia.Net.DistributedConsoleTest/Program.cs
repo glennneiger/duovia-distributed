@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Threading;
 using DuoVia.Net.Distributed;
 
@@ -13,8 +14,9 @@ namespace DuoVia.Net.DistributedConsoleTest
         {
             //wait for other host to start
             Thread.Sleep(3000);
-
+            var port = 9096;
             var endpoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9096);
+
             float subscriptionRate = 0.5f;
             int logPollingIntervalSeconds = 1;
             using (DistributedClient<ITest> client = Distributor.Connect<ITest>(typeof(Test), 
