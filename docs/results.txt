@@ -1,0 +1,67 @@
+Do one url: http://www.tsjensen.com/blog
+r:307, s:177, b:82226
+
+Do 10 urls in sequence
+r:248, s:162, b:82226, u:http://www.tsjensen.com/blog
+r:174, s:107, b:46090, u:http://www.google.com
+r:259, s:486, b:74020, u:http://www.yahoo.com
+r:181, s:110, b:42567, u:http://www.linkedin.com
+r:302, s:212, b:32756, u:http://www.ancestry.com
+r:156, s:451, b:110531, u:http://www.cnn.com
+r:631, s:887, b:192586, u:http://www.stackoverflow.com
+r:184, s:79, b:68460, u:http://www.whitehouse.gov
+r:336, s:263, b:50376, u:http://www.byu.edu
+r:1360, s:167, b:15807, u:http://www.utah.edu
+Total elapsed time: 6766
+
+Do 10 urls in parallel
+r:77, s:37, b:68460, u:http://www.whitehouse.gov
+r:88, s:60, b:46090, u:http://www.google.com
+r:79, s:78, b:42567, u:http://www.linkedin.com
+r:73, s:145, b:74020, u:http://www.yahoo.com
+r:190, s:76, b:32756, u:http://www.ancestry.com
+r:50, s:335, b:110531, u:http://www.cnn.com
+r:177, s:263, b:50376, u:http://www.byu.edu
+r:273, s:217, b:82226, u:http://www.tsjensen.com/blog
+r:215, s:1215, b:192586, u:http://www.stackoverflow.com
+r:1748, s:157, b:15807, u:http://www.utah.edu
+Total elapsed time: 1920
+
+round:1
+r:2088, s:486, b:15807, on: TSA65SOEASTASIA, u:http://www.utah.edu
+r:1595, s:694, b:50376, on: TSA65WESTEU, u:http://www.byu.edu
+r:556, s:2078, b:110531, on: TSA65SOEASTASIA, u:http://www.cnn.com
+r:184, s:69, b:68460, on: TSA65SOEASTASIA, u:http://www.whitehouse.gov
+r:527, s:548, b:194493, on: TSA65WESTEU, u:http://www.stackoverflow.com
+r:1054, s:25, b:46042, on: TSA65EASTUS, u:http://www.google.com
+r:210, s:224, b:42567, on: TSA65EASTUS, u:http://www.linkedin.com
+r:167, s:267, b:74021, on: TSA65WESTUS, u:http://www.yahoo.com
+r:267, s:91, b:32756, on: TSA65WESTUS, u:http://www.ancestry.com
+r:298, s:39, b:82226, on: TSA65WESTUS, u:http://www.tsjensen.com/blog
+Total elapsed time: 4417
+
+round:2
+r:1639, s:2024, b:192701, on: TSA65SOEASTASIA, u:http://www.stackoverflow.com
+r:1731, s:879, b:50376, on: TSA65SOEASTASIA, u:http://www.byu.edu
+r:1007, s:567, b:32756, on: TSA65SOEASTASIA, u:http://www.ancestry.com
+r:213, s:769, b:110531, on: TSA65WESTEU, u:http://www.cnn.com
+r:1179, s:115, b:15807, on: TSA65WESTUS, u:http://www.utah.edu
+r:323, s:5, b:68460, on: TSA65WESTEU, u:http://www.whitehouse.gov
+r:370, s:187, b:82226, on: TSA65EASTUS, u:http://www.tsjensen.com/blog
+r:80, s:162, b:74223, on: TSA65EASTUS, u:http://www.yahoo.com
+r:217, s:31, b:42567, on: TSA65WESTUS, u:http://www.linkedin.com
+r:53, s:3, b:46134, on: TSA65WESTUS, u:http://www.google.com
+Total elapsed time: 4387
+
+round:3
+r:261, s:2344, b:110531, on: TSA65SOEASTASIA, u:http://www.cnn.com
+r:509, s:2022, b:192701, on: TSA65SOEASTASIA, u:http://www.stackoverflow.com
+r:417, s:1164, b:50376, on: TSA65SOEASTASIA, u:http://www.byu.edu
+r:687, s:424, b:32756, on: TSA65WESTEU, u:http://www.ancestry.com
+r:457, s:539, b:42552, on: TSA65SOEASTASIA, u:http://www.linkedin.com
+r:1043, s:115, b:15807, on: TSA65WESTUS, u:http://www.utah.edu
+r:342, s:187, b:82226, on: TSA65EASTUS, u:http://www.tsjensen.com/blog
+r:26, s:69, b:74223, on: TSA65EASTUS, u:http://www.yahoo.com
+r:76, s:30, b:68460, on: TSA65WESTUS, u:http://www.whitehouse.gov
+r:42, s:6, b:46036, on: TSA65WESTUS, u:http://www.google.com
+Total elapsed time: 3312
