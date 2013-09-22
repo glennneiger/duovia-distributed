@@ -1,0 +1,19 @@
+Sprint 3:
+
+        private static void DoTenUrlsInParallel()
+        {
+            Console.WriteLine("Do 10 urls in parallel");
+            var sw = Stopwatch.StartNew();
+            ISpeedTest test = new SpeedTest();
+            Parallel.ForEach(TestUrls, (url) =>
+            {
+                var result = test.GetSpeed(url);
+                Console.WriteLine("r:{0}, s:{1}, b:{2}, u:{3}",
+                    result.ResponseTimeMs, result.ReadStreamTimeMs, result.ResponseLength, result.Url);
+            });
+            sw.Stop();
+            Console.WriteLine("Total elapsed time: {0}", sw.ElapsedMilliseconds);
+            Console.WriteLine(string.Empty);
+        }
+
+		

@@ -1,0 +1,82 @@
+Sprint 1
+
+
+    [Serializable]
+    public class SpeedResults
+    {
+        public string Url { get; set; }
+        public long ResponseTimeMs { get; set; }
+        public long ReadStreamTimeMs { get; set; }
+        public int ResponseLength { get; set; }
+        public string MachineName { get; set; }
+    }
+
+    public interface ISpeedTest
+    {
+        SpeedResults GetSpeed(string url);
+    }
+
+    public class SpeedTest : ISpeedTest
+    {
+        public SpeedResults GetSpeed(string url)
+        {
+            // Set a default policy level for the "http:" and "https" schemes.
+            var policy = new HttpRequestCachePolicy(HttpRequestCacheLevel.Default);
+            HttpWebRequest.DefaultCachePolicy = policy;
+
+            var html = string.Empty;
+            var request = (HttpWebRequest)WebRequest.Create(url);
+
+            // Define a cache policy for this request only. 
+            var noCachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
+            request.CachePolicy = noCachePolicy;
+
+            var sw = Stopwatch.StartNew();
+            var response = request.GetResponse();
+            sw.Stop();
+            var responseTime = sw.ElapsedMilliseconds;
+            sw.Restart();
+            using (var stream = response.GetResponseStream())
+            {
+                if (null != stream)
+                {
+                    using (var reader = new StreamReader(stream))
+                    {
+                        html = reader.ReadToEnd();
+                    }
+                }
+            }
+            sw.Stop();
+            var readTime = sw.ElapsedMilliseconds;
+            return new SpeedResults()
+            {
+                Url = url,
+                ResponseTimeMs = responseTime,
+                ReadStreamTimeMs = readTime,
+                ResponseLength = html.Length,
+                MachineName = Environment.MachineName
+            };
+        }
+    }
+
+
+
+into class Program
+
+        private static void DoWarmUp()
+        {
+            var testUrl = @"http://www.tsjensen.com/blog/post/2013/04/22/Distributed-Parallel-Processing-in-Simple-NET-Console-Application.aspx";
+            ISpeedTest test = new SpeedTest();
+            var result = test.GetSpeed(testUrl);
+        }
+
+        private static void DoOneUrl()
+        {
+            var testUrl = @"http://www.tsjensen.com/blog";
+            Console.WriteLine("Do one url: {0}", testUrl);
+            ISpeedTest test = new SpeedTest();
+            var result = test.GetSpeed(testUrl);
+            Console.WriteLine("r:{0}, s:{1}, b:{2}", 
+                result.ResponseTimeMs, result.ReadStreamTimeMs, result.ResponseLength);
+            Console.WriteLine(string.Empty);
+        }
