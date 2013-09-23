@@ -1,0 +1,33 @@
+Sprint 2:
+
+
+        private static string[] TestUrls = new string[]
+            {
+                @"http://www.tsjensen.com/blog",
+                @"http://www.google.com",
+                @"http://www.yahoo.com",
+                @"http://www.linkedin.com",
+                @"http://www.ancestry.com",
+                @"http://www.cnn.com",
+                @"http://www.stackoverflow.com",
+                @"http://www.whitehouse.gov",
+                @"http://www.byu.edu",
+                @"http://www.utah.edu"
+            };
+
+        private static void DoTenUrlsInSequence()
+        {
+            Console.WriteLine("Do 10 urls in sequence");
+            var sw = Stopwatch.StartNew();
+            ISpeedTest test = new SpeedTest();
+            foreach (var url in TestUrls)
+            {
+                var result = test.GetSpeed(url);
+                Console.WriteLine("r:{0}, s:{1}, b:{2}, u:{3}", 
+                    result.ResponseTimeMs, result.ReadStreamTimeMs, result.ResponseLength, result.Url);
+            }
+            sw.Stop();
+            Console.WriteLine("Total elapsed time: {0}", sw.ElapsedMilliseconds);
+            Console.WriteLine(string.Empty);
+        }
+

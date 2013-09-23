@@ -101,18 +101,14 @@ namespace spidey
             else
             {
                 //these server names are temporary - to run this test use your own
-                //var servers = new string[]
-                //{
-                //    "yourserver1.cloudapp.net",
-                //    "yourserver2.cloudapp.net",
-                //    "yourserver3.cloudapp.net",
-                //    "yourserver4.cloudapp.net",
-                //    "yourserver5.cloudapp.net",
-                //    "yourserver6.cloudapp.net"
-                //};
                 var servers = new string[]
                 {
-                    "myserver.cloudapp.net"
+                    "t5westus.cloudapp.net",
+                    "t5eastus.cloudapp.net",
+                    "t5northeu.cloudapp.net",
+                    "t5westeu.cloudapp.net",
+                    "t5soeastasia.cloudapp.net",
+                    "t5eastasia.cloudapp.net"
                 };
 
                 serverEndpoints = new IPEndPoint[servers.Length];
