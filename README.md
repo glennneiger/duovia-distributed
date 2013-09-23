@@ -5,7 +5,7 @@ duovia-distributed
 
 ### A Distributed Task Parallel Processing Library for .NET.
 
-Get the [NuGet Package][3]
+Get the [NuGet Package][1]
 
 The [Task Paralel Library][2] (TPL) introduced in .NET 4.0 and [async and await][3] asynchronous programming introduced in .NET 4.5 make parallel programming on a single machine so easy.
 
@@ -170,4 +170,3 @@ Of course the code above is completely contrived but it serves to demonstrate ju
 [2]: http://msdn.microsoft.com/en-us/library/dd460717.aspx   "Task Paralel Library"
 [3]: http://msdn.microsoft.com/en-us/library/vstudio/hh191443.aspx    "async and await"
 [4]: https://github.com/duovia/duovia-mpivisor    "DuoVia.MpiVisor"
-
