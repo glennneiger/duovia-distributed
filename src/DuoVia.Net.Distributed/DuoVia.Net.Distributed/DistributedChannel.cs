@@ -21,17 +21,17 @@ namespace DuoVia.Net.Distributed
         /// Creates a connection to the concrete object handling method calls on the server side
         /// </summary>
         /// <param name="endpoint"></param>
-        public DistributedChannel(DistributedEndPoint endpoint)
+        public DistributedChannel(Type serviceType, DistributedEndPoint endpoint)
         {
             _endpoint = endpoint;
-            SyncInterface();
+            SyncInterface(null);
         }
 
         /// <summary>
         /// This method asks the server for a list of identifiers paired with method
         /// names and -parameter types. This is used when invoking methods server side.
         /// </summary>
-        protected override void SyncInterface()
+        protected override void SyncInterface(Type serviceType)
         {
             byte[] syncBytes;
             using (var client = new ServiceClient(_endpoint.EndPoint))

@@ -67,7 +67,8 @@ namespace DuoVia.Net.Distributed.Agent
             }
 
             _agentService = new AgentService(this, _endPoint);
-            _agentServiceHost = new NpHost(_agentService, string.Format("dpp-{0}", _sessionId));
+            _agentServiceHost = new NpHost(string.Format("dpp-{0}", _sessionId));
+            _agentServiceHost.AddService<IAgentService>(_agentService);
             _agentServiceHost.Open();
         }
 
