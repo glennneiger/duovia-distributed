@@ -30,7 +30,8 @@ namespace DuoVia.Net.Distributed.Server
 
             //must include some info about this host
             _serviceHost = new ServiceHost(endPoint, packageStorageDirectory, sessionExecutionDirectory, runLocalInProcess);
-            _tcpHost = new TcpHost(_serviceHost, endPoint);
+            _tcpHost = new TcpHost(endPoint);
+            _tcpHost.AddService<IServiceHost>(_serviceHost);
             _tcpHost.Open();
         }
 
