@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>DuoVia.Net</id>
-    <version>1.3.0</version>
+    <version>1.3.6</version>
     <authors>Duovia</authors>
     <owners>Duovia</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/duovia/duovia-net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A Lightweight Services Library for .NET.</description>
-    <releaseNotes>BREAKING CHANGE: Multi-service hosting with AddService method. The break is minor. Users will need to refactor use of the Host class and its descendants by calling the AddService method rather than the constructor to add service implementations to be hosted.</releaseNotes>
+    <releaseNotes>Enhanced serialization of native types and arrays of native types.</releaseNotes>
     <copyright>Copyright 2013 Duovia Inc.</copyright>
-    <tags>Services NamedPipes TCP Messaging</tags>
+    <tags>Services Host Client NamedPipes TCP Messaging RPC Interception</tags>
   </metadata>
 </package>
